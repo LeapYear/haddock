@@ -1097,7 +1097,9 @@ extractDecl declMap name decl
             in case matches of
               [d0] -> extractDecl declMap name (noLoc . InstD $ DataFamInstD d0)
               _ -> error "internal: extractDecl (ClsInstD)"
-      _ -> error "internal: extractDecl"
+      _ -> O.pprPanic "extractDecl" $
+        O.text "Unhandled decl for" O.<+> O.ppr name O.<> O.text ":"
+        O.$$ O.nest 4 (O.ppr decl)
 
 
 extractPatternSyn :: Name -> Name -> [LHsType GhcRn] -> [LConDecl GhcRn] -> LSig GhcRn
