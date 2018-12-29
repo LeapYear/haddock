@@ -1,0 +1,6 @@
+resolver: lts-12.24
+packages:
+- ./
+- haddock-api/
+- haddock-library/
+- haddock-test/
